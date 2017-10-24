@@ -31,6 +31,8 @@ IN THE SOFTWARE.
 #include <stdint.h>
 #include <stdio.h>
 
+#include "estructuras.h"
+
 typedef struct WAVHeader {
   char ChunkID[4];   /*  4 bytes   */
   int32_t ChunkSize; /*  4 bytes   */
@@ -68,11 +70,13 @@ int writeWAVHeader(FILE *file_p, WAVHeader wav_header);
 void writeSampleMono(FILE *file_p, MuestraMono muestra);
 void writeSampleEstereo(FILE *file_p, MuestraEstereo muestra);
 
+void writeSamplesMono(FILE *file_p, ArrayDouble muestras);
+
 // Lectura
 WAVHeader readHeaderWAV(FILE *file_p);
 MuestraMono readSampleMono(FILE *file_p, int index);
 MuestraEstereo readSampleEstereo(FILE *file_p, int index);
-
+float getDuracionWAV(WAVHeader header);
 // Mostrar en terminal
 void printHeaderWAV(WAVHeader header);
 void printSamplesWAV(FILE *file_p, WAVHeader header);

@@ -1,7 +1,7 @@
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
-typedef struct ComplexNumber{
+typedef struct ComplexNumber {
   double real;
   double imag;
 } ComplexNumber;
