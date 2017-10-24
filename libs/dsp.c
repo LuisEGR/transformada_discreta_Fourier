@@ -107,24 +107,6 @@ ArrayDouble crearSeno(int items, float fm) {
   return out;
 }
 
-// ArrayComplex transformadaFourier(ArrayDouble x) {
-//   int N = x.length;
-//   double ang;
-//   double angeach;
-//   ArrayComplex X = newArrayComplex(N);
-
-//   for (int k = 0; k <= N - 1; k++) {
-//     X.items[k] = newComplexNumber(0, 0);
-//     // ang = - (2 * M_PI * k) / N
-//     for (int n = 0; n <= N - 1; n++) {
-//       ang = -(2.0 * M_PI * k * n) / N;
-//       X.items[k].real += x.items[n] * cos(ang);
-//       X.items[k].imag += x.items[n] * sin(ang);
-//     }
-//   }
-//   return X;
-// }
-
 ArrayComplex transformadaFourier(FILE *file_p, WAVHeader header) {
   int N = header.Subchunk2Size / (header.BitsPerSample / 8);
   double ang;

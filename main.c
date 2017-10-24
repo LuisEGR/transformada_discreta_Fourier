@@ -66,6 +66,8 @@ int main(int argc, char *argv[]) {
     printf("\n Magnitud y fase de la TDF\n");
     ArrayDouble magnitudTDF = getMagFromArrayComplex(tdf);
     ArrayDouble faseTDF = getAngFromArrayComplex(tdf);
+    faseTDF = mapArrayDouble(faseTDF, -1, 1);
+    printArrayDouble(faseTDF);
     for (int i = 0; i < tdf.length; i++) {
       muestra_estereo.left = magnitudTDF.items[i];
       muestra_estereo.right = faseTDF.items[i];
