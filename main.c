@@ -46,6 +46,10 @@ int main(int argc, char *argv[]) {
       writeSampleEstereo(salida, muestra_estereo);
     }
 
+    // printArrayComplex(tdf);
+    printf("\nMagnitud: \n");
+    printArrayDouble(magnitudTdf);
+
     printf("\nArchivo %s generado!\n", argv[3]);
 
   } else if (argv[1][1] == '2') {
@@ -58,6 +62,8 @@ int main(int argc, char *argv[]) {
           newMuestraEstereo(tdf.items[i].real, tdf.items[i].imag);
       writeSampleEstereo(salida, mE);
     }
+    printArrayComplex(tdf);
+
     printf("\nArchivo %s generado!\n", argv[3]);
 
   } else if (argv[1][1] == '3') {
@@ -66,8 +72,12 @@ int main(int argc, char *argv[]) {
     printf("\n Magnitud y fase de la TDF\n");
     ArrayDouble magnitudTDF = getMagFromArrayComplex(tdf);
     ArrayDouble faseTDF = getAngFromArrayComplex(tdf);
-    faseTDF = mapArrayDouble(faseTDF, -1, 1);
+    // faseTDF = mapArrayDouble(faseTDF, -1, 1);
+    printf("\nFase:");
     printArrayDouble(faseTDF);
+
+    printf("\nMagnitud:");
+    printArrayDouble(magnitudTDF);
     for (int i = 0; i < tdf.length; i++) {
       muestra_estereo.left = magnitudTDF.items[i];
       muestra_estereo.right = faseTDF.items[i];

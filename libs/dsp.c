@@ -124,21 +124,23 @@ ArrayComplex transformadaFourier(FILE *file_p, WAVHeader header) {
   return X;
 }
 
-// ArrayComplex transformadaFourierInversa(ArrayComplex X){
-//   int N = X.length;
-//   double ang;
-//   double con;
-//   ArrayComplex x = newArrayComplex(N);
-//
-//   for (int n = 0; n <= N-1; n++) {
-//     for (int k = 0; k <= N-1; k++) {
-//       ang = 2 * M_PI * k * n / N;
-//       con = 1 / N;
-//       x.items[n].real += newComplexNumber(con, 0) * X.items[k] *
-//       newComplexNumber(cos(ang), 0);
-//       x.items[n].imag += newComplexNumber(con, 0) * X.items[k] *
-//       newComplexNumber(sin(ang), 0);
-//     }
-//   }
-//   return x;
-// }
+ArrayDouble transformadaFourierInversa(ArrayComplex X) {
+  int N = X.length;
+  double ang;
+  double con;
+  double sumTemp;
+  ArrayDouble x = newArrayDouble(N);
+  for (int n = 0; n <= N - 1; n++) {
+    sumTemp = 0;
+    for (int k = 0; k <= N - 1; k++) {
+      ang = (2 * M_PI * k * n) / N;
+      sumTemp += complexMulti(X[k], newComplexNumber(cos(ang), sen(ang))).real;
+    }
+    x.items[n] = (1 / N) * sumTemp;
+  }
+  return x;
+}
+
+// ang = 2 * M_PI * k * n / N;
+// con = 1 / N;
+// x.items[n] = con * /

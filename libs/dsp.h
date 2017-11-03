@@ -33,7 +33,7 @@ ArrayDouble crearSeno(int items, float fm);
 
 // Transformada Discreta de Fourier
 ArrayComplex transformadaFourier(FILE *file_p, WAVHeader header);
-
+ArrayDouble transformadaFourierInversa(ArrayComplex X);
 // ArrayComplex transformadaFourier(ArrayDouble x);
 // ArrayComplex transformadaFourierInversa(ArrayComplex x);
 

@@ -164,8 +164,10 @@ ArrayDouble getMagFromArrayComplex(ArrayComplex c) {
   ArrayDouble out = newArrayDouble(c.length);
   for (int i = 0; i < c.length; i++) {
     double m = getMagnitud(c.items[i]);
-    out.items[i] = m > 1 ? 1 : m < -1 ? -1 : m;
+    out.items[i] = m;
+    // out.items[i] = m > 1 ? 1 : m < -1 ? -1 : m;
   }
+  out = mapArrayDouble(out, 0, 1);
   return out;
 }
 
@@ -176,5 +178,6 @@ ArrayDouble getAngFromArrayComplex(ArrayComplex c) {
     out.items[i] = m;
     // out.items[i] = m > 1 ? 1 : m < -1 ? -1 : m;
   }
+  // out = mapArrayDouble(out, -1, 1);
   return out;
 }
