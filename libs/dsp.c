@@ -134,7 +134,7 @@ ArrayDouble transformadaFourierInversa(ArrayComplex X) {
     sumTemp = 0;
     for (int k = 0; k <= N - 1; k++) {
       ang = (2 * M_PI * k * n) / N;
-      sumTemp += complexMulti(X[k], newComplexNumber(cos(ang), sen(ang))).real;
+      sumTemp += complexMulti(X.items[k], newComplexNumber(cos(ang), sin(ang))).real;
     }
     x.items[n] = (1 / N) * sumTemp;
   }

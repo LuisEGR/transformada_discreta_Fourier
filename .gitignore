@@ -52,5 +52,6 @@ Mkfile.old
 dkms.conf
 
 tdf
+tonos
 **/.DS_Store
 **.wav

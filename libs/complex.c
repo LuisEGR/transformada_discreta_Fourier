@@ -32,5 +32,5 @@ ComplexNumber complexMulti(ComplexNumber a, ComplexNumber b) {
 }
 
 void printComplex(ComplexNumber a) {
-  printf("\t[%d] %f + %fj\n", i, a.real, a.imag);
+  printf("\t%f + %fj\n", a.real, a.imag);
 }
