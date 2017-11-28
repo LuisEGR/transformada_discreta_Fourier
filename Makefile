@@ -7,6 +7,8 @@ all: $(PROJECT)
 $(PROJECT): clibs
 	gcc -Wall -c main.c -o main.o -w -lm
 	gcc -Wall main.o $(LIBS_OBJECTS) -o $(PROJECT) -lm
+	gcc -Wall -c tonos.c -o tonos.o -w -lm
+	gcc -Wall tonos.o $(LIBS_OBJECTS) -o tonos -lm
 
 clibs: $(LIBS_OBJECTS)
 	cd libs; make
