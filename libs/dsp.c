@@ -107,6 +107,48 @@ ArrayDouble crearSeno(int items, float fm) {
   return out;
 }
 
+
+ArrayComplex TDF(ArrayDouble muestras) { 
+  int N = muestras.length;
+  double ang;
+  ArrayComplex X = newArrayComplex(N);
+  for (int k = 0; k <= N - 1; k++) {
+    X.items[k] = newComplexNumber(0, 0);
+    // ang = - (2 * M_PI * k) / N
+    for (int n = 0; n <= N - 1; n++) {
+      ang = -(2.0 * M_PI * k * n) / N;
+      X.items[k].real += muestras.items[n] * cos(ang);
+      X.items[k].imag += muestras.items[n] * sin(ang);
+    }
+  }
+  return X;
+}
+
+ArrayDouble TDFI(ArrayComplex tdf) {
+  int N = tdf.length;
+  double ang;
+  double con;
+  double realval;
+  ArrayComplex X = newArrayComplex(N);
+  ArrayDouble tdfi = newArrayDouble(N);
+  double scale = 1.0 / (float)N;
+
+  for (int n = 0; n <= N - 1; n++) {
+    for (int k = 0; k <= N - 1; k++) {
+      ang = (2 * M_PI * k * n) / N;
+      X.items[k].real += tdf.items[n].real * cos(ang);
+      X.items[k].imag += tdf.items[n].imag * sin(ang);
+    }
+  }
+
+  for (int i = 0; i < N; i++) {
+    X.items[i].real *= scale;
+    X.items[i].imag *= scale;
+    tdfi.items[i] = X.items[i].real - X.items[i].imag;
+  }
+  return tdfi;
+}
+
 ArrayComplex transformadaFourier(FILE *file_p, WAVHeader header) {
   int N = header.Subchunk2Size / (header.BitsPerSample / 8);
   double ang;

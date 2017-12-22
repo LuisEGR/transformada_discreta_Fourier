@@ -2,10 +2,6 @@
 #include "libs/dsp.h"
 #include "libs/wav.h"
 
-/*
-* Muestreo y recuperación de una señal
-* haciendo convolución con un filtro pasabajas
-*/
 
 int main(int argc, char *argv[]) {
   FILE *entrada, *salida;
